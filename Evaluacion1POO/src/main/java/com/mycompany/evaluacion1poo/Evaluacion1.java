@@ -23,10 +23,11 @@ public class Evaluacion1 {
     static ArrayList<Alumno> listaAlumnos = new ArrayList<Alumno>();
     
     public static void main(String[] args) {
+        String respuesta;
         //Creamos un objeto de la clase Estadistica
         //<Clase> <nombreObjeto> = new <constructor>
+        do{
         Estadistica estadistica = new Estadistica();
-       
         solicitarCantidadAlumnos();
         //Capturamos la cantidad de alumnos y la asignamos a la propiedad del objeto
         estadistica.setCantidadAlumnos(capturarCantidadAlumnos());
@@ -42,6 +43,9 @@ public class Evaluacion1 {
         mostrarPromedioEdad(estadistica);
         mostrarPromedioEstatura(estadistica);
         mostrarPorcentajeHombres(estadistica);
+        mostrarConsulta();
+        respuesta = capturarRespuesta();
+        }while(respuesta.equals("s"));
 
         
     }
@@ -143,5 +147,16 @@ public class Evaluacion1 {
 
     private static void mostrarPorcentajeHombres(Estadistica estadistica) {
         System.out.println("Porcentaje hombres :" + estadistica.getPorcentajeHombres());
+    }
+
+    private static void mostrarConsulta() {
+        System.out.println("¿Desea calcular nuevamente?");
+    }
+
+    private static String capturarRespuesta() {
+         String respuesta;
+         Scanner scanner = new Scanner(System.in);
+         respuesta = scanner.nextLine();
+         return respuesta;
     }
 }
