@@ -5,6 +5,8 @@
  */
 package vista;
 
+import modelo.Vehiculo;
+
 /**
  *
  * @author fredy
@@ -27,21 +29,103 @@ public class IngresoSolicitud extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        lbl_titulo = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        txt_marca = new javax.swing.JTextField();
+        txt_modelo = new javax.swing.JTextField();
+        txt_ano = new javax.swing.JTextField();
+        btn_solicitar = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        lbl_titulo.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
+        lbl_titulo.setText("Ingreso de solicitud de seguro");
+
+        jLabel1.setText("Marca");
+
+        jLabel2.setText("Modelo");
+
+        jLabel3.setText("Año del vehículo");
+
+        btn_solicitar.setText("Solicitar");
+        btn_solicitar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_solicitarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jSeparator1))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(55, 55, 55)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(btn_solicitar)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel2)
+                                .addComponent(jLabel1))
+                            .addGap(136, 136, 136)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(txt_ano, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txt_modelo, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(txt_marca, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                    .addComponent(lbl_titulo))
+                .addGap(0, 60, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(lbl_titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(txt_marca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(txt_modelo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(txt_ano, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(btn_solicitar)
+                .addContainerGap(56, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btn_solicitarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_solicitarActionPerformed
+        //Incorporamos las instrucciones cuando el usuario hace clic en el botón
+        //Creamos un objeto de la clase Vehiculo
+        Vehiculo vehiculo = new Vehiculo();
+        //Capturamos los valores desde JFrame y asignamos a variables locales
+        String marca    = txt_marca.getText();
+        String modelo   = txt_modelo.getText();
+        int ano         = Integer.parseInt(txt_ano.getText());
+        //Asociamos los datos con el objeto de la clase Vehiculo
+        vehiculo.setMarca(marca);
+        vehiculo.setModelo(modelo);
+        vehiculo.setAno(ano);
+        //Mostramos el JFrame de resultado
+        ResultadoSolicitud resultadoSolicitud = new ResultadoSolicitud(vehiculo);
+        resultadoSolicitud.setVisible(true);
+    }//GEN-LAST:event_btn_solicitarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -79,5 +163,14 @@ public class IngresoSolicitud extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_solicitar;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JLabel lbl_titulo;
+    private javax.swing.JTextField txt_ano;
+    private javax.swing.JTextField txt_marca;
+    private javax.swing.JTextField txt_modelo;
     // End of variables declaration//GEN-END:variables
 }

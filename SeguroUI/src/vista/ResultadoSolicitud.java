@@ -5,6 +5,8 @@
  */
 package vista;
 
+import modelo.Vehiculo;
+
 /**
  *
  * @author fredy
@@ -17,7 +19,26 @@ public class ResultadoSolicitud extends javax.swing.JFrame {
     public ResultadoSolicitud() {
         initComponents();
     }
-
+    //Creamos un nuevo constructor para recibir el objeto Vehiculo
+    public ResultadoSolicitud(Vehiculo vehiculo){
+        initComponents();
+        
+        mostrarDatosRecibidos(vehiculo);
+        calcularValores();
+        mostrarResultados();
+    }
+    private void calcularValores() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+      private void mostrarResultados() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+        private void mostrarDatosRecibidos(Vehiculo vehiculo) {
+        //Incorporamos valores en labels
+        lbl_marca.setText(vehiculo.getMarca());
+        lbl_modelo.setText(vehiculo.getModelo());
+        lbl_ano.setText(String.valueOf(vehiculo.getAno()));
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -27,17 +48,68 @@ public class ResultadoSolicitud extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        lbl_marca = new javax.swing.JLabel();
+        lbl_modelo = new javax.swing.JLabel();
+        lbl_ano = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jLabel1.setText("Resultado Solicitud de Seguro");
+
+        jLabel2.setText("Marca");
+
+        jLabel3.setText("Modelo");
+
+        jLabel4.setText("Año");
+
+        lbl_marca.setText("jLabel5");
+
+        lbl_modelo.setText("jLabel6");
+
+        lbl_ano.setText("jLabel7");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel4))
+                        .addGap(59, 59, 59)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lbl_ano)
+                            .addComponent(lbl_modelo)
+                            .addComponent(lbl_marca))))
+                .addContainerGap(188, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addGap(35, 35, 35)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(lbl_marca))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(lbl_modelo))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(lbl_ano))
+                .addContainerGap(159, Short.MAX_VALUE))
         );
 
         pack();
@@ -79,5 +151,18 @@ public class ResultadoSolicitud extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel lbl_ano;
+    private javax.swing.JLabel lbl_marca;
+    private javax.swing.JLabel lbl_modelo;
     // End of variables declaration//GEN-END:variables
+
+
+
+  
+
+
 }
