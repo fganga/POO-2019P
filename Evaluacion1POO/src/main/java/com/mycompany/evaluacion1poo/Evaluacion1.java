@@ -27,27 +27,30 @@ public class Evaluacion1 {
         //Creamos un objeto de la clase Estadistica
         //<Clase> <nombreObjeto> = new <constructor>
         do{
-        Estadistica estadistica = new Estadistica();
-        solicitarCantidadAlumnos();
-        //Capturamos la cantidad de alumnos y la asignamos a la propiedad del objeto
-        estadistica.setCantidadAlumnos(capturarCantidadAlumnos());
-        
-        //Solicitamos los datos de los alumnos
-        solicitarYAlmacenarDatos(estadistica);
-        //Mostramos valor ingresados al ArrayList listaAlumnos
-        //mostrarDatos();
-  
-        estadistica.calcularPromedioEdad(listaAlumnos);
-        estadistica.calcularPromedioEstatura(listaAlumnos);
-        estadistica.calcularPorcentajeHombres(listaAlumnos);
-        mostrarPromedioEdad(estadistica);
-        mostrarPromedioEstatura(estadistica);
-        mostrarPorcentajeHombres(estadistica);
-        mostrarConsulta();
-        respuesta = capturarRespuesta();
-        }while(respuesta.equals("s"));
+            Estadistica estadistica = new Estadistica();
+            solicitarCantidadAlumnos();
+            //Capturamos la cantidad de alumnos y la asignamos a la propiedad del objeto
+            estadistica.setCantidadAlumnos(capturarCantidadAlumnos());
 
-        
+            //Solicitamos los datos de los alumnos
+            solicitarYAlmacenarDatos(estadistica);
+            //Mostramos valor ingresados al ArrayList listaAlumnos
+            //mostrarDatos();
+
+            estadistica.calcularPromedioEdad(listaAlumnos);
+            estadistica.calcularPromedioEstatura(listaAlumnos);
+            estadistica.calcularPorcentajeHombres(listaAlumnos);
+            
+            mostrarPromedioEdad(estadistica);
+            mostrarPromedioEstatura(estadistica);
+            mostrarPorcentajeHombres(estadistica);
+            mostrarConsulta();
+           
+            respuesta = capturarRespuesta();
+            
+            listaAlumnos.clear();
+        }while(respuesta.equals("s"));
+        mostrarFin(); 
     }
 
     private static void solicitarCantidadAlumnos() {
@@ -158,5 +161,9 @@ public class Evaluacion1 {
          Scanner scanner = new Scanner(System.in);
          respuesta = scanner.nextLine();
          return respuesta;
+    }
+
+    private static void mostrarFin() {
+        System.out.println("Programa Finalizado");
     }
 }
