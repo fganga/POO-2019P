@@ -5,6 +5,10 @@
  */
 package rentacar;
 
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+
 /**
  *
  * @author fredy
@@ -14,8 +18,19 @@ public class MenuPrincipal extends javax.swing.JFrame {
     /**
      * Creates new form MenuPrincipal
      */
+    JMenuBar menuBar;
+    JMenu menuAdministrar,menuGestion;
+    JMenuItem menuItemVehiculos;
+    JMenuItem menuItemMantenciones;
+    JMenuItem menuItemClientes;
+    JMenuItem menuItemArriendos;
+    
     public MenuPrincipal() {
         initComponents();
+        construirMenu();
+    }
+     private void construirMenu() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     /**
@@ -91,4 +106,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
+
+   
 }
