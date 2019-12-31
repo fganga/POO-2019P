@@ -5,15 +5,22 @@
  */
 package rentacar;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
+import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import vista.arriendo.MenuArriendo;
+import vista.vehiculo.MenuVehiculo;
 
 /**
  *
  * @author fredy
  */
-public class MenuPrincipal extends javax.swing.JFrame {
+public class MenuPrincipal extends javax.swing.JFrame implements ActionListener,ItemListener {
 
     /**
      * Creates new form MenuPrincipal
@@ -24,14 +31,42 @@ public class MenuPrincipal extends javax.swing.JFrame {
     JMenuItem menuItemMantenciones;
     JMenuItem menuItemClientes;
     JMenuItem menuItemArriendos;
+    JMenuItem menuItemCobranzas;
     
     public MenuPrincipal() {
         initComponents();
         construirMenu();
     }
      private void construirMenu() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+         //Instanciamos variables de objeto globales
+         menuBar                = new JMenuBar();
+         menuAdministrar        = new JMenu("Administración");
+         menuGestion            = new JMenu("Gestión");
+         menuItemVehiculos      = new JMenuItem("Vehículos");
+         menuItemMantenciones   = new JMenuItem("Mantenciones");
+         menuItemClientes       = new JMenuItem("Clientes");
+         menuItemArriendos      = new JMenuItem("Arriendos");
+         menuItemCobranzas      = new JMenuItem("Cobranzas");
+         //Asociamos los objetos según corresponda
+         //Asociamos menu a menubar y los item de cada menú.
+         menuBar.add(menuAdministrar);
+         menuBar.add(menuGestion);
+         
+         menuAdministrar.add(menuItemVehiculos);
+         menuAdministrar.add(menuItemMantenciones);
+         menuAdministrar.add(menuItemCobranzas);
+         
+         menuGestion.add(menuItemClientes);
+         menuGestion.add(menuItemArriendos);
+         //Habilitamos listener para los elementos del menú
+         menuItemVehiculos.addActionListener(this);
+         menuItemArriendos.addActionListener(this);
+         
+         //Habilitamos el menubar a este JFrame
+         this.setJMenuBar(menuBar);
+     
+         
+     }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -106,6 +141,29 @@ public class MenuPrincipal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        //EValuamos que elemento fué seleccionado y ejecutamos una acción
+        if(e.getSource() == menuItemVehiculos){
+            //Desplegamos el JFrame de administración de vehículos
+            MenuVehiculo menuVehiculo = new MenuVehiculo();
+            menuVehiculo.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+            menuVehiculo.setVisible(true);
+        }
+        if(e.getSource() == menuItemArriendos){
+            //Desplegamos el JFrame de administración de vehículos
+            MenuArriendo menuArriendo = new MenuArriendo();
+            menuArriendo.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+            menuArriendo.setVisible(true);
+        }
+        
+    }
+
+    @Override
+    public void itemStateChanged(ItemEvent e) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 
    
 }

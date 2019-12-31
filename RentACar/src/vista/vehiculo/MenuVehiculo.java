@@ -5,19 +5,48 @@
  */
 package vista.vehiculo;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
+import javax.swing.JDialog;
+import javax.swing.JFrame;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+
 /**
  *
  * @author fredy
  */
-public class MenuVehiculo extends javax.swing.JFrame {
+public class MenuVehiculo extends javax.swing.JFrame implements ActionListener, ItemListener {
 
     /**
      * Creates new form MenuVehiculo
      */
+    JMenuBar menuBar;
+    JMenu menuVehiculo;
+    JMenuItem itemVehiculoAgregar,itemVehiculoListar;
+    AgregarVehiculo agregarVehiculo ;
     public MenuVehiculo() {
         initComponents();
+        construirMenu();
     }
-
+    private void construirMenu() {
+     menuBar      = new JMenuBar();
+     menuVehiculo = new JMenu("Vehiculo");
+     itemVehiculoAgregar = new JMenuItem("Agregar Vehiculo");
+     itemVehiculoListar = new JMenuItem("Listar Vehiculos");
+     
+     menuBar.add(menuVehiculo);
+     menuVehiculo.add(itemVehiculoAgregar);
+     menuVehiculo.add(itemVehiculoListar);
+     //Agregamos listener al item
+     itemVehiculoAgregar.addActionListener(this);
+     itemVehiculoListar.addActionListener(this);
+     
+     this.setJMenuBar(menuBar);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -27,21 +56,42 @@ public class MenuVehiculo extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowFocusListener(new java.awt.event.WindowFocusListener() {
+            public void windowGainedFocus(java.awt.event.WindowEvent evt) {
+                formWindowGainedFocus(evt);
+            }
+            public void windowLostFocus(java.awt.event.WindowEvent evt) {
+            }
+        });
+
+        jLabel1.setText("Gestión de Vehículos");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(121, 121, 121)
+                .addComponent(jLabel1)
+                .addContainerGap(147, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(124, 124, 124)
+                .addComponent(jLabel1)
+                .addContainerGap(160, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
+       
+    }//GEN-LAST:event_formWindowGainedFocus
 
     /**
      * @param args the command line arguments
@@ -79,5 +129,32 @@ public class MenuVehiculo extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+    //Determinamos la acción según el item seleccionado
+    if(e.getSource() == itemVehiculoAgregar){
+        agregarVehiculo = new AgregarVehiculo();
+        agregarVehiculo.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+        agregarVehiculo.setAlwaysOnTop(true);
+        //menuBar.setVisible(false);
+        agregarVehiculo.setVisible(true);
+        
+ 
+    }
+    if(e.getSource() == itemVehiculoListar){
+        ListarVehiculos listarVehiculos = new ListarVehiculos();
+        listarVehiculos.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+        listarVehiculos.setVisible(true);
+    }
+    }
+
+    @Override
+    public void itemStateChanged(ItemEvent e) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+   
 }
